@@ -6,12 +6,9 @@ services:
     build:
       context: ../
       dockerfile: Dockerfile
-    command: ["npm", "run", "start" "--workspace=gateway"]
+    command: ["npm", "run", "gateway"]
     ports:
       - "3000:3000"
-    volumes:
-      - ../../:/usr/src/app
-      - /usr/src/app/node_modules
     restart: "unless-stopped"
 #    depends_on:
 #      - postgres-local
@@ -23,10 +20,7 @@ services:
 #    build:
 #      context: ../
 #      dockerfile: Dockerfile
-#    command: ["nodemon", "./packages/users/src/server.js"]
-#    volumes:
-#      - ../../:/usr/src/app
-#      - /usr/src/app/node_modules
+#    command: ["npm", "run", "users"]
 #    restart: "unless-stopped"
 #    depends_on:
 #      - postgres-local
@@ -38,10 +32,7 @@ services:
 #    build:
 #      context: ../
 #      dockerfile: Dockerfile
-#    command: ["nodemon", "./packages/admins/src/server.js"]
-#    volumes:
-#      - ../../:/usr/src/app
-#      - /usr/src/app/node_modules
+#    command: ["npm", "run", "admins"]
 #    restart: "unless-stopped"
 #    depends_on:
 #      - postgres-local
@@ -53,10 +44,7 @@ services:
 #    build:
 #      context: ../
 #      dockerfile: Dockerfile
-#    command: ["nodemon", "./packages/articles/src/server.js"]
-#    volumes:
-#      - ../../:/usr/src/app
-#      - /usr/src/app/node_modules
+#    command: ["npm", "run", "articles"]
 #    restart: "unless-stopped"
 #    depends_on:
 #      - postgres-local
@@ -80,8 +68,6 @@ services:
 
 networks:
   backend:
-  pgadmin:
 
 volumes:
   pg_data:
-  pgadmin:

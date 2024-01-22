@@ -8,7 +8,7 @@ COPY package*.json ./
 # RUN apk --no-cache add --virtual .builds-deps build-base python3
 RUN npm install -g ts-node
 RUN npm install --legacy-peer-deps
-RUN npm install gateway -w @kidsbe/common
+RUN npm install gateway -w libs/common
 # RUN npm install gateway -w @kidsbe/common
 
 COPY . .

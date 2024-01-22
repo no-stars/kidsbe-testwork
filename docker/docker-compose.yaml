@@ -36,7 +36,7 @@ services:
   admins-app-local:
     container_name: ${PROJECT_NAME}-admins-app-local
     build:
-      context: ../packages/admins
+      context: ../
       dockerfile: Dockerfile
     command: ["nodemon", "./packages/admins/src/server.js"]
     volumes:
@@ -51,7 +51,7 @@ services:
   articles-app-local:
     container_name: ${PROJECT_NAME}-articles-app-local
     build:
-      context: ../packages/articles
+      context: ../
       dockerfile: Dockerfile
     command: ["nodemon", "./packages/articles/src/server.js"]
     volumes:

@@ -5,7 +5,7 @@
 
 ```cd kidsbe-testwork/```
 
-```docker-compose up```
+```npm run docker```
 
 
 ##
@@ -26,6 +26,3 @@ articles: `http://localhost:3003/api`
 
 ```npm run start:all```
 
-TODO
-```npm run test:all```
-```POSTMAN: ```

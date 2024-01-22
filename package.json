@@ -36,7 +36,7 @@
     "@types/pg": "^8.10.9"
   },
   "scripts": {
-    "docker": "docker-compose --env-file ./docker/docker-local.env --file ./docker/docker-compose.yaml up --build",
+    "docker": "docker-compose --env-file ./docker/docker-local.env --file ./docker/docker-compose.yaml up",
     "docker-local": "docker-compose --env-file ./docker/docker-local.env --file ./docker/docker-compose.local.yaml up",
     "start:all": "lerna run start"
   }

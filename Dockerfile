@@ -9,7 +9,7 @@ COPY package*.json ./
 RUN npm install -g ts-node
 RUN npm install --legacy-peer-deps
 RUN npm install common -w gateway
-RUN npm install communication -w gateway
+RUN npm install libs/communication -w packages/gateway
 
 COPY . .
 

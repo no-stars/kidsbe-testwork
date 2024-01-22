@@ -6,7 +6,7 @@ services:
     build:
       context: ../
       dockerfile: Dockerfile
-    command: ["nodemon", "./packages/gateway/src/server.js"]
+    command: ["npm", "run", "start" "--workspace=gateway"]
     ports:
       - "3000:3000"
     volumes:
@@ -18,65 +18,65 @@ services:
     networks:
       - backend
 
-  users-app-local:
-    container_name: ${PROJECT_NAME}-users-app-local
-    build:
-      context: ../
-      dockerfile: Dockerfile
-    command: ["nodemon", "./packages/users/src/server.js"]
-    volumes:
-      - ../../:/usr/src/app
-      - /usr/src/app/node_modules
-    restart: "unless-stopped"
-    depends_on:
-      - postgres-local
-    networks:
-      - backend
+#  users-app-local:
+#    container_name: ${PROJECT_NAME}-users-app-local
+#    build:
+#      context: ../
+#      dockerfile: Dockerfile
+#    command: ["nodemon", "./packages/users/src/server.js"]
+#    volumes:
+#      - ../../:/usr/src/app
+#      - /usr/src/app/node_modules
+#    restart: "unless-stopped"
+#    depends_on:
+#      - postgres-local
+#    networks:
+#      - backend
+##
+#  admins-app-local:
+#    container_name: ${PROJECT_NAME}-admins-app-local
+#    build:
+#      context: ../
+#      dockerfile: Dockerfile
+#    command: ["nodemon", "./packages/admins/src/server.js"]
+#    volumes:
+#      - ../../:/usr/src/app
+#      - /usr/src/app/node_modules
+#    restart: "unless-stopped"
+#    depends_on:
+#      - postgres-local
+#    networks:
+#      - backend
 #
-  admins-app-local:
-    container_name: ${PROJECT_NAME}-admins-app-local
-    build:
-      context: ../
-      dockerfile: Dockerfile
-    command: ["nodemon", "./packages/admins/src/server.js"]
-    volumes:
-      - ../../:/usr/src/app
-      - /usr/src/app/node_modules
-    restart: "unless-stopped"
-    depends_on:
-      - postgres-local
-    networks:
-      - backend
-
-  articles-app-local:
-    container_name: ${PROJECT_NAME}-articles-app-local
-    build:
-      context: ../
-      dockerfile: Dockerfile
-    command: ["nodemon", "./packages/articles/src/server.js"]
-    volumes:
-      - ../../:/usr/src/app
-      - /usr/src/app/node_modules
-    restart: "unless-stopped"
-    depends_on:
-      - postgres-local
-    networks:
-      - backend
-
-  postgres-local:
-    container_name: ${PROJECT_NAME}-postgres-local
-    build: ./images/postgres
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      PGDATA: ${PGDATA}
-    volumes:
-      - pg_data:${PGDATA}
-    ports:
-      - ${POSTGRES_EXPOSE_PORT}:5432
-    networks:
-      - pgadmin
-      - backend
+#  articles-app-local:
+#    container_name: ${PROJECT_NAME}-articles-app-local
+#    build:
+#      context: ../
+#      dockerfile: Dockerfile
+#    command: ["nodemon", "./packages/articles/src/server.js"]
+#    volumes:
+#      - ../../:/usr/src/app
+#      - /usr/src/app/node_modules
+#    restart: "unless-stopped"
+#    depends_on:
+#      - postgres-local
+#    networks:
+#      - backend
+#
+#  postgres-local:
+#    container_name: ${PROJECT_NAME}-postgres-local
+#    build: ./images/postgres
+#    environment:
+#      POSTGRES_USER: ${POSTGRES_USER}
+#      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+#      PGDATA: ${PGDATA}
+#    volumes:
+#      - pg_data:${PGDATA}
+#    ports:
+#      - ${POSTGRES_EXPOSE_PORT}:5432
+#    networks:
+#      - pgadmin
+#      - backend
 
 networks:
   backend:

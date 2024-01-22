@@ -38,6 +38,10 @@
   "scripts": {
     "docker": "docker-compose --env-file ./docker/docker-local.env --file ./docker/docker-compose.yaml up",
     "docker-local": "docker-compose --env-file ./docker/docker-local.env --file ./docker/docker-compose.local.yaml up",
-    "start:all": "lerna run start"
+    "start:all": "lerna run start",
+    "admins": "ts-node packages/admins/src/server.ts",
+    "users": "ts-node packages/users/src/server.ts",
+    "gateway": "ts-node packages/gateway/src/server.ts",
+    "articles": "ts-node packages/articles/src/server.ts"
   }
 }

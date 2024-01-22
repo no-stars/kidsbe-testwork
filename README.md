@@ -22,7 +22,17 @@ articles: `http://localhost:3003/api`
 
 ### Local
 
+
+```npm i```
+
 ```npm run docker-local```
 
 ```npm run start:all```
 
+
+
+
+```cd packages/admins && npm run start```
+```cd packages/gateway && npm run start```
+```cd packages/articles && npm run start```
+```cd packages/users && npm run start```

@@ -26,7 +26,7 @@ services:
       - postgres-local
     networks:
       - backend
-#
+
   admins-app-local:
     container_name: ${PROJECT_NAME}-admins-app-local
     build:
@@ -63,7 +63,6 @@ services:
     ports:
       - ${POSTGRES_EXPOSE_PORT}:5432
     networks:
-      - pgadmin
       - backend
 
 networks:

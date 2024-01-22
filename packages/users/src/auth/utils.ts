@@ -17,8 +17,4 @@ export class AuthUtils {
     }
   }
 
-  public static createCookie(tokenData: AccessToken): string {
-    return `Authorization=${tokenData.accessToken}; HttpOnly; Max-Age=${tokenData.expiresIn};`
-  }
-
 }

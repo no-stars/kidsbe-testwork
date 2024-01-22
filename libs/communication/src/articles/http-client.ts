@@ -20,7 +20,7 @@ export class ArticlesHttpClient implements ArticlesClient {
 
   public async list(): Promise<any> {
     const url = `${this.SERVICE_URL}/api/articles`
-    const result: AxiosResponse<ServiceReponse<ArticleListResponse>> = await axios.get(url)
+    const result: AxiosResponse<ServiceReponse<ArticleListResponse>> = await axios.get(url, { validateStatus: () => true })
     const { data } = result
 
     return data
@@ -35,6 +35,7 @@ export class ArticlesHttpClient implements ArticlesClient {
       body,
       {
         headers: h,
+        validateStatus: () => true,
       }
     )
     const { data } = result
@@ -50,7 +51,10 @@ export class ArticlesHttpClient implements ArticlesClient {
     const url = `${this.SERVICE_URL}/api/articles/${params.id}`
     const h = new AxiosHeaders()
     h.set('request-user-id', headers['request-user-id'])
-    const result: AxiosResponse<ArticleModel> = await axios.put(url, body, { headers: h })
+    const result: AxiosResponse<ArticleModel> = await axios.put(url, body, {
+      headers: h,
+      validateStatus: () => true
+    })
     const { data } = result
 
     return data
@@ -60,7 +64,7 @@ export class ArticlesHttpClient implements ArticlesClient {
     const url = `${this.SERVICE_URL}/api/articles/${params.id}`
     const h = new AxiosHeaders()
     h.set('request-user-id', headers['request-user-id'])
-    const result: AxiosResponse<boolean> = await axios.delete(url, { headers: h })
+    const result: AxiosResponse<boolean> = await axios.delete(url, { headers: h, validateStatus: () => true })
     const { data } = result
 
     return data

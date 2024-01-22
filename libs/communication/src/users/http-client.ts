@@ -11,7 +11,7 @@ export class UsersHttpClient implements UsersClient {
 
   public async signIn(body: SignInRequestBody): Promise<any> {
     const url = `${this.SERVICE_URL}/api/auth/sign_in`
-    const result: AxiosResponse<SignInResponseBody> = await axios.post(url, body)
+    const result: AxiosResponse<SignInResponseBody> = await axios.post(url, body, { validateStatus: () => true })
     const { data } = result
 
     return data
@@ -19,7 +19,7 @@ export class UsersHttpClient implements UsersClient {
 
   public async signUp(body: SignUpRequestBody): Promise<any> {
     const url = `${this.SERVICE_URL}/api/auth/sign_up`
-    const result: AxiosResponse<SignUpResponseBody> = await axios.post(url, body)
+    const result: AxiosResponse<SignUpResponseBody> = await axios.post(url, body, { validateStatus: () => true })
     const { data } = result
 
     return data

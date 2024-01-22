@@ -29,7 +29,7 @@ export class RemoveArticleUseCase {
     let hasAccess: boolean = belongsToUser
 
     if (!hasAccess) {
-      const response = await this.adminsClient.authenticate({ userId: payload.userId }) as any
+      const response = await this.adminsClient.authenticate({ userId: payload.userId })
       const isAdmin: boolean = response.data.authenticated
       hasAccess = isAdmin
     }

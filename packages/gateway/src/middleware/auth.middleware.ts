@@ -19,11 +19,11 @@ export const AuthMiddleware = async (
     const client = new UsersHttpClient()
     const response = await client.verify({ accessToken })
 
-    if (!response?.userId) {
+    if (!response?.data?.userId) {
       throw Exception.new({ code: Code.UNAUTHORIZED_ERROR })
     }
 
-    req.userId = response.userId
+    req.userId = response.data.userId
     next()
   } catch (error) {
     next(error)

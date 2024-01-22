@@ -1,6 +1,6 @@
 import { injectable } from 'inversify'
 import { NextFunction, Request, Response } from 'express'
-import { ArticlesHttpClient, RequestUserIdHeader } from '@kidsbe/communication'
+import { ArticlesHttpClient } from '@kidsbe/communication'
 import { AuthorizedRequest } from '@kidsbe/common'
 
 
@@ -36,7 +36,7 @@ export class ArticlesController {
   public async edit(req: Request & AuthorizedRequest, res: Response, next: NextFunction) {
     try {
       const userId = req.userId ?? ''
-      const id: string = req.params.id ?? ''
+      const id = req.params.id ?? ''
       const response = await this.client.edit(
         { id },
         req.body,
@@ -52,7 +52,7 @@ export class ArticlesController {
   public async remove(req: Request & AuthorizedRequest, res: Response, next: NextFunction) {
     try {
       const userId = req.userId ?? ''
-      const id: string = req.params.id ?? ''
+      const id = req.params.id ?? ''
       const response = await this.client.remove(
         { id },
         { 'request-user-id': userId }

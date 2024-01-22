@@ -24,8 +24,7 @@ export class AuthController {
 
       res.status(200).json(response)
     } catch (error) {
-      // next(error)
-      throw error
+      next(error)
     }
   }
 

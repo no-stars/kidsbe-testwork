@@ -11,7 +11,7 @@ export class AdminsHttpClient implements AdminsClient {
 
   public async authenticate(body: AuthenticationRequestBody): Promise<any> {
     const url = `${this.SERVICE_URL}/api/admin/authentication`
-    const result = await axios.post(url, body)
+    const result = await axios.post(url, body, { validateStatus: () => true })
 
     return result.data
   }

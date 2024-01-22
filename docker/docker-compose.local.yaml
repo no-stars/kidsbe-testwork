@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  postgres-local:
+    container_name: ${PROJECT_NAME}-postgres-local
+    build: ./images/postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: ${PGDATA}
+    volumes:
+      - pg_data:${PGDATA}
+    ports:
+      - ${POSTGRES_EXPOSE_PORT}:5432
+    networks:
+      - pgadmin
+
+  pgadmin-local:
+    container_name: ${PROJECT_NAME}-pgadmin-local
+    build: ./images/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - ${PGADMIN_EXPOSE_PORT}:80
+    networks:
+      - pgadmin
+
+networks:
+  pgadmin:
+
+volumes:
+  pg_data:
+  pgadmin:

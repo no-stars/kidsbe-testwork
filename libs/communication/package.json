@@ -1,0 +1,9 @@
+{
+  "name": "@kidsbe/communication",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Vyacheslav",
+  "homepage": "",
+  "license": "ISC",
+  "main": "src/index.ts"
+}

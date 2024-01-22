@@ -11,6 +11,8 @@
 ##
 API доступен на `http://localhost:3000/api`
 
+Приватная сеть:
+
 users: `http://localhost:3001/api`
 
 admins: `http://localhost:3002/api`

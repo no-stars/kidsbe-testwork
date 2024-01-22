@@ -10,61 +10,61 @@ services:
     ports:
       - "3000:3000"
     restart: "unless-stopped"
-#    depends_on:
-#      - postgres-local
+    depends_on:
+      - postgres-local
     networks:
       - backend
 
-#  users-app-local:
-#    container_name: ${PROJECT_NAME}-users-app-local
-#    build:
-#      context: ../
-#      dockerfile: Dockerfile
-#    command: ["npm", "run", "users"]
-#    restart: "unless-stopped"
-#    depends_on:
-#      - postgres-local
-#    networks:
-#      - backend
-##
-#  admins-app-local:
-#    container_name: ${PROJECT_NAME}-admins-app-local
-#    build:
-#      context: ../
-#      dockerfile: Dockerfile
-#    command: ["npm", "run", "admins"]
-#    restart: "unless-stopped"
-#    depends_on:
-#      - postgres-local
-#    networks:
-#      - backend
+  users-app-local:
+    container_name: ${PROJECT_NAME}-users-app-local
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    command: ["npm", "run", "users"]
+    restart: "unless-stopped"
+    depends_on:
+      - postgres-local
+    networks:
+      - backend
 #
-#  articles-app-local:
-#    container_name: ${PROJECT_NAME}-articles-app-local
-#    build:
-#      context: ../
-#      dockerfile: Dockerfile
-#    command: ["npm", "run", "articles"]
-#    restart: "unless-stopped"
-#    depends_on:
-#      - postgres-local
-#    networks:
-#      - backend
-#
-#  postgres-local:
-#    container_name: ${PROJECT_NAME}-postgres-local
-#    build: ./images/postgres
-#    environment:
-#      POSTGRES_USER: ${POSTGRES_USER}
-#      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-#      PGDATA: ${PGDATA}
-#    volumes:
-#      - pg_data:${PGDATA}
-#    ports:
-#      - ${POSTGRES_EXPOSE_PORT}:5432
-#    networks:
-#      - pgadmin
-#      - backend
+  admins-app-local:
+    container_name: ${PROJECT_NAME}-admins-app-local
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    command: ["npm", "run", "admins"]
+    restart: "unless-stopped"
+    depends_on:
+      - postgres-local
+    networks:
+      - backend
+
+  articles-app-local:
+    container_name: ${PROJECT_NAME}-articles-app-local
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    command: ["npm", "run", "articles"]
+    restart: "unless-stopped"
+    depends_on:
+      - postgres-local
+    networks:
+      - backend
+
+  postgres-local:
+    container_name: ${PROJECT_NAME}-postgres-local
+    build: ./images/postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: ${PGDATA}
+    volumes:
+      - pg_data:${PGDATA}
+    ports:
+      - ${POSTGRES_EXPOSE_PORT}:5432
+    networks:
+      - pgadmin
+      - backend
 
 networks:
   backend:
